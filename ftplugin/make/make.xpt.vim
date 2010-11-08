@@ -21,7 +21,6 @@ XPTinclude
 
 
 " ================================= Snippets ===================================
-XPTemplateDef
 
 XPT addprefix " $(addprefix ...)
 $(addprefix `prefix^, `elemList^)
@@ -75,7 +74,3 @@ XPT basevar " CC ... CFLAG ..
 `lang^C^FLAGS := `switches^-Wall -Wextra^
 
 
-" ================================= Wrapper ===================================
-
-XPT var_ " $(SEL)
-$(`wrapped^)

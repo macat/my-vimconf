@@ -27,7 +27,6 @@ XPTinclude
 " ========================= Function and Variables =============================
 
 " ================================= Snippets ===================================
-XPTemplateDef
 
 
 
@@ -132,7 +131,7 @@ type `typename^ `_^^=
     }
 
 
-XPT try " try .. with .. -> ..
+XPT try wrap=expr " try .. with .. -> ..
 try `expr^
 with  `exc^ -> `rez^
 `     `...`
@@ -179,16 +178,4 @@ let rec `name^ `_^^ =
 and `subname^ `_^^ =
     `subwhat^` `...^
 in
-
-" ================================= Wrapper ===================================
-
-
-XPT try_ " try SEL with .. -> ..
-try
-    `wrapped^
-with  `exc^ -> `rez^
-`     `...`
-{{^     | `exc2^ -> `rez2^
-`     `...`
-^`}}^
 

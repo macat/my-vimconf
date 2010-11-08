@@ -16,8 +16,6 @@ XPTvar $BRloop        ' '
 XPTvar $BRstc         ' '
 XPTvar $BRfun         ' '
 
-XPTvar $SParg         ''  
-
 XPTinclude
       \ _common/common
 
@@ -51,7 +49,6 @@ endif
 " ========================= Function and Variables =============================
 
 " ================================= Snippets ===================================
-XPTemplateDef
 
 XPT html " <?$PHP_TAG ... ?>
 ?>`html^<?`$PHP_TAG^

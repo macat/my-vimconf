@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Applications/MAMP/MAMP.app'
 let g:netrw_dirhist_2='/Users/macat/Documents/Work/adverticum/adsng-admin/adsng-admin/www/static/javascript/AdsngAdmin'
 let g:netrw_dirhist_3='/home/macat/Documents/Work/adverticum/goa3/trunk/build'
 let g:netrw_dirhist_4='/home/macat/Documents/Work/dev6/sites/default/modules/uc_voucher'
 let g:netrw_dirhist_5='/boot/grub'
 let g:netrw_dirhist_6='/Users/macat/Downloads/joshuaclayton-blueprint-css-3ded314/blueprint/src'
+let g:netrw_dirhist_7='/Users/macat/Documents/Work/mindpirates/vereinsheim/media/css/blueprint/src'
+let g:netrw_dirhist_8='/Users/macat/Documents/Work/epiteszforum/d5/modules/npool'

@@ -24,7 +24,6 @@ XPTinclude
 " ========================= Function and Variables =============================
 
 " ================================= Snippets ===================================
-XPTemplateDef
 
 
 XPT lex " Basic lex file
@@ -43,9 +42,4 @@ XPT ruleList " ..  {..} ...
 `reg^           { `return^ }`...^
 
 
-
-" ================================= Wrapper ===================================
-
-XPT rule_ " SEL  { ... }
-`wrapped^       { `cursor^ }
 

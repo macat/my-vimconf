@@ -10,15 +10,14 @@ XPTvar $BRif
 XPTvar $VOID_LINE /* void */;
 
 " ================================= Snippets ===================================
-XPTemplateDef
 
-XPT for hint=for\ i++
-for (`int^ `i^ = `0^; `i^ < `len^; ++`i^) `$BRif^{
+XPT for " for i++
+for (`int^ `i^ = `0^; `i^ < `len^; ++`i^)`$BRif^{
     `cursor^
 }
 
-XPT forr hint=for\ i--
-for (`int^ `i^ = `n^; `i^ >`=^ `end^; --`i^) `$BRif^{
+XPT forr "for i--
+for (`int^ `i^ = `n^; `i^ >`=^ `end^; --`i^)`$BRif^{
     `cursor^
 }
 

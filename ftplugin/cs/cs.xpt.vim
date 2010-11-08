@@ -34,14 +34,12 @@ XPTinclude
 
 
 " ================================= Snippets ===================================
-XPTemplateDef
 
 
 XPT foreach " foreach (.. in ..) {..}
 foreach ( `var^ `e^ in `what^ )`$BRloop^{
     `cursor^
 }
-..XPT
 
 
 XPT struct " struct { .. }
@@ -50,7 +48,6 @@ XPT struct " struct { .. }
     `fieldAccess^public^ `type^ `name^;`...^
     `fieldAccess^public^ `type^ `name^;`...^
 }
-..XPT
 
 
 XPT class " class +ctor
@@ -61,7 +58,6 @@ class `className^
         `cursor^
     }
 }
-..XPT
 
 
 XPT main " static main string[]
@@ -69,7 +65,6 @@ public static void Main( string[] args )
 {
     `cursor^
 }
-..XPT
 
 
 XPT prop " .. .. {get set}
@@ -80,7 +75,6 @@ public `type^ `Name^
     `set...{{^
     set { `what^ = `value^; }`}}^
 }
-..XPT
 
 
 XPT namespace " namespace {}
@@ -88,9 +82,9 @@ namespace `name^
 {
     `cursor^
 }
-..XPT
 
-XPT try " try .. catch .. finally
+
+XPT try wrap=what " try .. catch .. finally
 XSET handler=$CL handler $CR
 try
 {
@@ -107,33 +101,13 @@ finally
 {
     `cursor^
 }`}}^
-..XPT
 
 
 
 " ================================= Wrapper ===================================
-XPT region_ " #region #endregion
+XPT region_ wraponly=wrapped " #region #endregion
 #region `regionText^
 `wrapped^
 `cursor^
 #endregion /* `regionText^ */
-
-XPT try_ " try .. catch .. finally
-XSET handler=$CL handler $CR
-try
-{
-    `wrapped^
-}`
-`...^
-catch (`except^ e)
-{
-    `handler^
-}`
-`...^`
-`finally...{{^
-finally
-{
-    `cursor^
-}`}}^
-..XPT
 
