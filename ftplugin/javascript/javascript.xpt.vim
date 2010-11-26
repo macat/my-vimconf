@@ -13,6 +13,7 @@ XPTvar $BRel   \n
 XPTvar $BRloop    ' '
 XPTvar $BRstc ' '
 XPTvar $BRfun   ' '
+XPTvar $SParg      ''
 
 XPTvar $VOID_LINE  /* void */;
 XPTvar $CURSOR_PH      /* cursor */
