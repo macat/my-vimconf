@@ -330,3 +330,6 @@ XPT genExp " \(func\(x) for x in seq)
 
 XPT listComp " \[func\(x) for x in seq]
 [`$SParg^`:_generator:^`$SParg^]
+
+XPT pdb " pdb ..
+import pdb;pdb_set_trace()^
