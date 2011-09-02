@@ -36,6 +36,7 @@ endif
 
     python << EOF
 import vim
+print sys.version_info
 import os.path
 import sys
 
