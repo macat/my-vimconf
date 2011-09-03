@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 set nocompatible
 set et
 set sw=4
@@ -92,15 +94,10 @@ nnoremap <silent> <F3> :call EndWordComplete()<CR>
 "endfunction
 "command! OpenTree OpenTree
 
-nnoremap <silent> <F5> :CommandT ~/Work/lh/dowant/dowant/<CR>
 "nnoremap <silent> <F5> :openTree<CR>
 "echo '/' . join(g:NERDTreeFileNode.GetRootForTab()['path']['pathSegments'], '/')<CR>
 
 
-"nmap <unique> <silent> <F6> <Plug>SelectBuf 
-imap <C-F> <C-X><C-O>
-nnoremap <silent> <F7> :NERDTreeToggle<CR>
-nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Exit_OnlyWindow = 1
 
 vmap <silent> g/ y/<C-R>=substitute(escape(@", '\\/.*$^~[]'),'\n','\\n','g')<CR><CR>
@@ -114,15 +111,6 @@ map <C-B> :!php -l %<CR>
 set nobackup
 set nowritebackup
 set noswapfile
-
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
-nnoremap <C-P> :call PhpDocSingle()<CR>
-vnoremap <C-P> :call PhpDocRange()<CR> 
-
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
 
 
 " Status line
@@ -144,9 +132,50 @@ if has("colorcolumn")
   set colorcolumn=80
 endif
 
-let NERDTreeIgnore=['\.pyc$']
-nnoremap <Leader>x ciw'<C-r>"<Esc>
+noremap <Leader>x ciw'<C-r>"<Esc>
 vnoremap <Leader>x c'<C-r>"<Esc>
 
 let g:GetLatestVimScripts_allowautoinstall=1
+
+"{{{ Mappings
+
+" Buffer next, previous
+map <C-j> :bprev<CR>
+map <C-k> :bnext<CR>
+
+imap <C-F> <C-X><C-O>
+nnoremap <silent> <F7> :NERDTreeToggle<CR>
+nnoremap <silent> <F8> :TlistToggle<CR>
+"}}}
+"{{{ Plugins
+
+" NERDTree
+let NERDTreeIgnore=['\.pyc$']
+
+" Mini Buffer Explorer
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+
+" CommandT
+nnoremap <silent> <F5> :CommandT ~/Work/minus/<CR>
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_underbar_completion = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+
+"}}}
 
