@@ -1,4 +1,5 @@
-call pathogen#infect()
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 set nocompatible
 set et
@@ -160,5 +161,17 @@ let g:miniBufExplModSelTarget = 1
 
 " CommandT
 nnoremap <silent> <F5> :CommandT ~/Work/minus/<CR>
+
+" CloseTag
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+
+" Tagbar
+let g:tagbar_usearrows = 1
+nnoremap <leader>l :TagbarToggle<CR>
+
 "}}}
 
