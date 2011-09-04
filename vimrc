@@ -129,8 +129,9 @@ set statusline+=%<%P                         " file position
 " Show line number, cursor position.
 set ruler
 
-if has("colorcolumn")
+if has("gui_running")
   set colorcolumn=80
+  set cursorline
 endif
 
 noremap <Leader>x ciw'<C-r>"<Esc>
@@ -147,6 +148,31 @@ map <C-k> :bnext<CR>
 imap <C-F> <C-X><C-O>
 nnoremap <silent> <F7> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
+
+" Left/Right arrow keys change buffers in all modes
+noremap <Left> <Esc>:bp<CR>
+inoremap <Left> <Esc>:bp<CR>
+nnoremap <Left> <Esc>:bp<CR>
+vnoremap <Left> <Esc>:bp<CR>
+
+noremap <Right> <Esc>:bn<CR>
+inoremap <Right> <Esc>:bn<CR>
+nnoremap <Right> <Esc>:bn<CR>
+vnoremap <Right> <Esc>:bn<CR>
+
+
+
+" Disable up/down arrow keys
+noremap <up> <nop>
+noremap <down> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+
+
 "}}}
 "{{{ Plugins
 
