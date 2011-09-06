@@ -22,3 +22,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/easytags"]
+	path = bundle/easytags
+	url = https://github.com/xolox/vim-easytags.git

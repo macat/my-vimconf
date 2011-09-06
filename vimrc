@@ -61,14 +61,16 @@ syntax on
 
 """" GUI
 if has("gui_macvim")
-    set transparency=7
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    "set guifont=DroidSansMono:h12
-    set linespace=2
-    set guifont=Inconsolata:h14
-    set autochdir
+  set transparency=7
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  "set guifont=DroidSansMono:h12
+  set linespace=2
+  set guifont=Inconsolata:h14
+  set autochdir
+  " Fullscreen takes up entire screen
+  set fuoptions=maxhorz,maxvert
 endif
 
 
@@ -151,12 +153,10 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 
 " Left/Right arrow keys change buffers in all modes
 noremap <Left> <Esc>:bp<CR>
-inoremap <Left> <Esc>:bp<CR>
 nnoremap <Left> <Esc>:bp<CR>
 vnoremap <Left> <Esc>:bp<CR>
 
 noremap <Right> <Esc>:bn<CR>
-inoremap <Right> <Esc>:bn<CR>
 nnoremap <Right> <Esc>:bn<CR>
 vnoremap <Right> <Esc>:bn<CR>
 
@@ -169,15 +169,72 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 vnoremap <up> <nop>
 vnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
 
+
+" Command-/ to toggle comments
+map <D-/> <plug>NERDCommenterToggle<CR>
+imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
 "}}}
 "{{{ Plugins
 
+
+" If the parameter is a directory, cd into it
+function s:CdIfDirectory(directory)
+  let explicitDirectory = isdirectory(a:directory)
+  let directory = explicitDirectory || empty(a:directory)
+
+  if explicitDirectory
+    exe "cd " . fnameescape(a:directory)
+  endif
+
+  " Allows reading from stdin
+  " ex: git diff | mvim -R -
+  if strlen(a:directory) == 0 
+    return
+  endif
+
+  if directory
+    NERDTree
+    wincmd p
+    bd
+  endif
+
+  if explicitDirectory
+    wincmd p
+  endif
+endfunction
+
+autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
+
 " NERDTree
 let NERDTreeIgnore=['\.pyc$']
+
+" NERDTree utility function
+function s:UpdateNERDTree(...)
+  let stay = 0
+
+  if(exists("a:1"))
+    let stay = a:1
+  end
+
+  if exists("t:NERDTreeBufName")
+    let nr = bufwinnr(t:NERDTreeBufName)
+    if nr != -1
+      exe nr . "wincmd w"
+      exe substitute(mapcheck("R"), "<CR>", "", "")
+      if !stay
+        wincmd p
+      end
+    endif
+  endif
+
+  if exists(":CommandTFlush") == 2
+    CommandTFlush
+  endif
+endfunction
+
+autocmd FocusGained * call s:UpdateNERDTree()
 
 " Mini Buffer Explorer
 let g:miniBufExplMapWindowNavVim = 1
@@ -192,12 +249,17 @@ nnoremap <silent> <F5> :CommandT ~/Work/minus/<CR>
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 
-" SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-
 " Tagbar
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
+
+"Easytags
+let g:easytags_by_filetype = 1
+let g:easytags_auto_update = 0
+let g:easytags_auto_highlight = 0
+
+set updatetime=4000
+
 
 "}}}
 
