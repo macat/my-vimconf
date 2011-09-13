@@ -255,6 +255,9 @@ let g:easytags_auto_highlight = 0
 
 set updatetime=4000
 
+"YAIFA
+let g:yaifa_max_lines = 24
+
 
 "}}}
 

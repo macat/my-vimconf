@@ -25,3 +25,18 @@
 [submodule "bundle/rst_tables"]
 	path = bundle/rst_tables
 	url = https://github.com/nvie/vim-rst-tables.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "bundle/minibufexpl"]
+	path = bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "bundle/catn"]
+	path = bundle/catn
+	url = https://github.com/taku-o/vim-catn.git
+[submodule "bundle/yaifa"]
+	path = bundle/yaifa
+	url = https://github.com/Raimondi/YAIFA.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = https://github.com/hallettj/jslint.vim.git
