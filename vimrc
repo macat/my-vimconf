@@ -144,9 +144,6 @@ let g:GetLatestVimScripts_allowautoinstall=1
 "{{{ Mappings
 
 " Buffer next, previous
-map <C-j> :bprev<CR>
-map <C-k> :bnext<CR>
-
 imap <C-F> <C-X><C-O>
 nnoremap <silent> <F7> :NERDTreeToggle<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
@@ -159,8 +156,6 @@ vnoremap <Left> <Esc>:bp<CR>
 noremap <Right> <Esc>:bn<CR>
 nnoremap <Right> <Esc>:bn<CR>
 vnoremap <Right> <Esc>:bn<CR>
-
-
 
 " Disable up/down arrow keys
 noremap <up> <nop>
