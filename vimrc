@@ -1,6 +1,7 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+
 set nocompatible
 set et
 set sw=4
@@ -16,17 +17,17 @@ set dir=~/.backup,/tmp
 set mouse=a
 set wildmenu
 
+filetype on
+filetype plugin on
+
 """" Searching and Patterns
 set ignorecase							" search is case insensitive
 set smartcase							" search case sensitive if caps on 
 set incsearch							" show best match so far
 set hlsearch							" Highlight matches to the search 
 
-
-
 set foldmethod=indent
 set foldnestmax=1
-
 
 if has("autocmd")
   " Drupal *.module files.
@@ -61,49 +62,21 @@ syntax on
 
 """" GUI
 if has("gui_macvim")
-  set transparency=7
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   "set guifont=DroidSansMono:h12
   set linespace=2
-  set guifont=Inconsolata:h14
+  set guifont=Inconsolata:h15
   set autochdir
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 endif
 
-
 set hlsearch
-
 color wombat
-
-set dict+=~/.vim/dictionaries/drupal50-functions.dict
-
-filetype on
-filetype plugin on
-set nocompatible
-
 let xml_use_xhtml = 1
-
 let g:html_tag_case = 'lowercase'
-
-nnoremap <silent> <F4> :call DoWordComplete()<CR>
-nnoremap <silent> <F3> :call EndWordComplete()<CR>
-
-"function! s:OpenTree():
-"    call NERDTreeToggle
-"    return 1
-"endfunction
-"command! OpenTree OpenTree
-
-"nnoremap <silent> <F5> :openTree<CR>
-"echo '/' . join(g:NERDTreeFileNode.GetRootForTab()['path']['pathSegments'], '/')<CR>
-
-
-let Tlist_Exit_OnlyWindow = 1
-
-vmap <silent> g/ y/<C-R>=substitute(escape(@", '\\/.*$^~[]'),'\n','\\n','g')<CR><CR>
 
 augroup mkd
  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -139,7 +112,8 @@ endif
 noremap <Leader>x ciw'<C-r>"<Esc>
 vnoremap <Leader>x c'<C-r>"<Esc>
 
-let g:GetLatestVimScripts_allowautoinstall=1
+"Tags
+set tags=~/.vimtags
 
 "{{{ Mappings
 
@@ -170,66 +144,14 @@ vnoremap <down> <nop>
 map <D-/> <plug>NERDCommenterToggle<CR>
 imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
+nnoremap <leader>u :!ctags -R -f ~/.vimtags --languages=Python ~/Work/minus/minus_core/<CR><CR>
+
 "}}}
 "{{{ Plugins
 
 
-" If the parameter is a directory, cd into it
-function s:CdIfDirectory(directory)
-  let explicitDirectory = isdirectory(a:directory)
-  let directory = explicitDirectory || empty(a:directory)
-
-  if explicitDirectory
-    exe "cd " . fnameescape(a:directory)
-  endif
-
-  " Allows reading from stdin
-  " ex: git diff | mvim -R -
-  if strlen(a:directory) == 0 
-    return
-  endif
-
-  if directory
-    NERDTree
-    wincmd p
-    bd
-  endif
-
-  if explicitDirectory
-    wincmd p
-  endif
-endfunction
-
-autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
-
 " NERDTree
 let NERDTreeIgnore=['\.pyc$']
-
-" NERDTree utility function
-function s:UpdateNERDTree(...)
-  let stay = 0
-
-  if(exists("a:1"))
-    let stay = a:1
-  end
-
-  if exists("t:NERDTreeBufName")
-    let nr = bufwinnr(t:NERDTreeBufName)
-    if nr != -1
-      exe nr . "wincmd w"
-      exe substitute(mapcheck("R"), "<CR>", "", "")
-      if !stay
-        wincmd p
-      end
-    endif
-  endif
-
-  if exists(":CommandTFlush") == 2
-    CommandTFlush
-  endif
-endfunction
-
-autocmd FocusGained * call s:UpdateNERDTree()
 
 " Mini Buffer Explorer
 let g:miniBufExplMapWindowNavVim = 1
@@ -238,7 +160,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1 
 
 " CommandT
-nnoremap <silent> <F5> :CommandT ~/Work/minus/<CR>
+nnoremap <leader>m :CommandT ~/Work/minus/minus_core/minus_com<CR>
 
 " CloseTag
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
@@ -253,11 +175,8 @@ let g:easytags_by_filetype = 1
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
-set updatetime=4000
-
 "YAIFA
-let g:yaifa_max_lines = 24
-
+let g:yaifa_max_lines = 512
 
 "}}}
 
