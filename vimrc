@@ -149,6 +149,7 @@ nnoremap <leader>u :!ctags -R -f ~/.vimtags --languages=Python ~/Work/minus/minu
 "}}}
 "{{{ Plugins
 
+" Ack
 
 " NERDTree
 let NERDTreeIgnore=['\.pyc$']
