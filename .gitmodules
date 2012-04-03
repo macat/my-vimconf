@@ -1,6 +1,3 @@
-[submodule "bundle/delmitmate"]
-	path = bundle/delmitmate
-	url = git://github.com/Raimondi/delimitMate.git
 [submodule "bundle/closetag"]
 	path = bundle/closetag
 	url = git://github.com/docunext/closetag.vim.git
@@ -43,3 +40,6 @@
 [submodule "bundle/vim-powerline"]
 	path = bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "bundle/smartinput"]
+	path = bundle/smartinput
+	url = https://github.com/kana/vim-smartinput.git

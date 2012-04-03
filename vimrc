@@ -1,24 +1,18 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
 set nocompatible
 set et
-set sw=4
-set sts=4
 set expandtab
-set tabstop=4
 set autoindent
 set smartindent
-let php_sql_query = 1
-let php_folding = 1
-let php_htmlInStrings = 1
 set dir=~/.backup,/tmp
 set mouse=a
 set wildmenu
 
 filetype on
 filetype plugin on
+filetype indent on
 
 """" Searching and Patterns
 set ignorecase							" search is case insensitive
@@ -88,19 +82,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-
-" Status line
-set laststatus=2
-set statusline=
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%f\                          " filename
-set statusline+=%h%m%r%w                     " status flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
-set statusline+=%=                           " right align remainder
-set statusline+=0x%-8B                       " character value
-set statusline+=%-14(%l,%c%V%)               " line, character
-set statusline+=%<%P                         " file position
-
 " Show line number, cursor position.
 set ruler
 
@@ -116,6 +97,7 @@ vnoremap <Leader>x c'<C-r>"<Esc>
 set tags=~/.vimtags
 
 "{{{ Mappings
+cnoreabbrev W w
 
 " Buffer next, previous
 imap <C-F> <C-X><C-O>
