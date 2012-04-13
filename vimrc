@@ -14,6 +14,19 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='50,\"100,:200,%,n~/.viminfo
+
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
 """" Searching and Patterns
 set ignorecase							" search is case insensitive
 set smartcase							" search case sensitive if caps on 

@@ -43,3 +43,6 @@
 [submodule "bundle/smartinput"]
 	path = bundle/smartinput
 	url = https://github.com/kana/vim-smartinput.git
+[submodule "bundle/indent-object"]
+	path = bundle/indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object.git
