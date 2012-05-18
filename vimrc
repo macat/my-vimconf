@@ -107,7 +107,7 @@ noremap <Leader>x ciw'<C-r>"<Esc>
 vnoremap <Leader>x c'<C-r>"<Esc>
 
 "Tags
-set tags=~/.vimtags
+set tags=tags;
 
 "{{{ Mappings
 cnoreabbrev W w
@@ -140,6 +140,13 @@ map <D-/> <plug>NERDCommenterToggle<CR>
 imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
 nnoremap <leader>u :!ctags -R -f ~/.vimtags --languages=Python ~/Work/minus/minus_core/<CR><CR>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <C-c> %s/:\([^ ]*\)\(\s*\)=>/\1:/g
 
 "}}}
 "{{{ Plugins
