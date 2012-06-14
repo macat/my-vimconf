@@ -151,6 +151,9 @@ nnoremap <C-c> %s/:\([^ ]*\)\(\s*\)=>/\1:/g
 "}}}
 "{{{ Plugins
 
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+au BufNewFile,BufReadPost *.js setl foldmethod=indent nofoldenable
+
 " Ack
 
 " NERDTree
